@@ -36,6 +36,11 @@ RSpec.describe Transaction, type: :model do
     expect(transaction).to be_valid
   end
 
+  it "is valid only if it has a valid type_of_transaction" do
+    transaction.update(:type_of_transaction => "Transfer")
+    expect(transaction).to be_invalid
+  end
+
   it "belongs to a single user" do
     transaction.user
     expect(transaction.user).to eq(user)
@@ -50,7 +55,7 @@ RSpec.describe Transaction, type: :model do
     transaction.update(:amount => 0)
     expect(transaction).to be_invalid
   end
-  
+
   it "new transactions are not processed on creation" do
     expect(transaction.processed).to eq(false)
   end
