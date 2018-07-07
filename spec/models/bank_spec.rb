@@ -56,6 +56,12 @@ RSpec.describe Bank, type: :model do
     expect(bank).to be_valid
   end
 
+  it "has a unique name" do
+    bank = Bank.create(:name => "The Flatiron Credit Union")
+    new_bank = Bank.new(:name => "The Flatiron Credit Union")
+    expect(new_bank.save).to eq(false)
+  end
+
   it "has many users" do
     bank.update(:users => [user, user2, user3])
     expect(bank.users.count).to eq (3)
