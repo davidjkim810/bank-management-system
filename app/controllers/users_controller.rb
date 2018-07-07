@@ -1,19 +1,27 @@
 class UsersController < ApplicationController
   def new
-
     @user = User.new
   end
 
   def create
-    @user = User.new(user_params)
-    if @user && @user.authenticate(params[:user][:password])
-      @user.save
+    @user = User.find_by(params[:user][:username])
 
-      session[:user_id] = @user.id
-      redirect_to user_path(@user)
+    if @user
+      if @user.authenticate(params[:user][:password])
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
+      end
     else
-      @user.errors
-      redirect_to new_user_path
+      @user = User.new(user_params)
+
+      if @user.valid?
+        @user.save
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
+      else
+        @user.errors
+        redirect_to signup_path
+      end
     end
   end
 
