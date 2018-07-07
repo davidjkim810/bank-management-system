@@ -19,9 +19,12 @@ class Transaction < ApplicationRecord
       self.update(:processed => true)
 
       "You have successfully withdrawn #{self.amount}."
+    elsif self.type_of_transaction == "Fee"
+      self.account.update(:balance => account.balance - self.amount)
+      self.update(:processed => true)
 
+      "You have successfully paid the fee of #{self.amount}"
     end
-
-
   end
+
 end
