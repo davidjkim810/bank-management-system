@@ -60,7 +60,7 @@ RSpec.describe User, type: :model do
     expect(user).to be_valid
   end
 
-  it "is valid if password is at least 6 characters long" do
+  it "must have a password that is at least 6 characters long" do
     user.update(:password => "adsf")
     expect(user).to be_invalid
   end
@@ -70,7 +70,17 @@ RSpec.describe User, type: :model do
     expect(user).to be_invalid
   end
 
-  it "is invalid if that username already exists" do
+  it "zip_code can only be numbers" do
+    user.update(:zip_code => "da233")
+    expect(user).to be_invalid
+  end
+
+  it "zip_code must be 5 digits" do
+    user.update(:zip_code => "2444")
+    expect(user).to be_invalid
+  end
+
+  it "must have a unique username" do
     user
     new_user = User.create(
           :first_name => "John",
@@ -88,7 +98,7 @@ RSpec.describe User, type: :model do
     expect(new_user).to be_invalid
   end
 
-  it "is invalid if that email already exists" do
+  it "must have a unique email" do
     user
     new_user = User.create(
           :first_name => "John",
@@ -116,7 +126,6 @@ RSpec.describe User, type: :model do
   end
 
   it "has many transactions through accounts" do
-
     user.update(:accounts => [account1, account2, account3])
     new_transaction = Transaction.create(:type_of_transaction => "Deposit", :amount => 60000, :user_id => user.id, :account_id => user.accounts.first.id)
     Transaction.create(:type_of_transaction => "Withdrawal", :amount => 1000, :user_id => user.id, :account_id => user.accounts.last.id)
