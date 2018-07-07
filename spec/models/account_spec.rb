@@ -60,6 +60,28 @@ RSpec.describe Account, type: :model do
     expect(account).to be_valid
   end
 
+  it "cannot have a negative balance upon creation" do
+    account = Account.create(:type_of_account => "Checking", :balance => -300, :user_id => user.id)
+    expect(account).to be_invalid
+  end
+
+  it "can have a negative balance" do
+    account.update(:balance => -4000)
+    expect(account).to be_valid
+  end
+
+  it "is valid if all account fields (type_of_account, balance, user_id) are filled out" do
+    account = Account.create(:type_of_account => "Checking", :user_id => 1)
+    expect(account).to be_invalid
+  end
+
+  it "is valid if type_of_account is 'Checking', 'Savings', or 'Investment'" do
+    account = Account.create(:type_of_account => "Savings", :balance => 200, :user_id => user.id)
+    account_2 = Account.create(:type_of_account => "checkings", :balance => 20, :user_id => user.id)
+    expect(account).to be_valid
+    expect(account_2).to be_invalid
+  end
+
   it "belongs to a single user" do
     expect(account.user).to eq(user)
   end
