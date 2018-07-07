@@ -44,9 +44,10 @@ ActiveRecord::Schema.define(version: 2018_07_06_233547) do
     t.string "city"
     t.string "state"
     t.string "zip_code"
+    t.string "age"
     t.string "username"
     t.string "email"
-    t.string "password"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

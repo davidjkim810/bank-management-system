@@ -65,19 +65,17 @@ RSpec.describe Account, type: :model do
   end
 
   it "has many transactions" do
-    account.transactions << transaction
-    account.transactions << transaction1
-    account.transactions << transaction2
+    account.update(:transactions => [transaction, transaction1, transaction2])
     expect(account.transactions.count).to eq(3)
   end
 
   it "can have the balance deducted" do
-    account.balance = account.balance - 2500
+    account.balance -= 2500
     expect(account.balance).to eq(2500)
   end
 
   it "can have a negative balance" do
-    account.balance = account.balance - 5500
+    account.balance -= 5500
    expect(account.balance).to eq(-500)
   end
 
