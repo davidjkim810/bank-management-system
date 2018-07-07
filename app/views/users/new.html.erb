@@ -1,4 +1,6 @@
 <center>
+
+
 <h1>Welcome, Please Sign Up Below</h1>
 
 <%= form_for(@user) do |f| %>
@@ -59,4 +61,9 @@
 
   <%= f.submit "Create New User" %>
 <% end %>
+
+<% if flash[:message] %>
+   <h3><%= flash[:message] %></h3>
+<% end %>
+
 </center>
