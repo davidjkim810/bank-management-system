@@ -14,6 +14,7 @@ RSpec.describe Account, type: :model do
       :street_address => "300 Flatiron Way",
       :city => "Wonderland",
       :state => "NJ",
+      :age => 19,
       :zip_code => "07854",
       :username => "JohnDoe123",
       :email => "JohnDoe@gmail.com",
