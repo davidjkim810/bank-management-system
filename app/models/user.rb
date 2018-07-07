@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6, message: "Password must be at least 6 characters long"}
   validates :zip_code, numericality: {only_integer: true, message: "Only numbers allowed"}
   validates :zip_code, length: { is: 5 }
-  validates :first_name, :last_name, :city, :state, format: { with: /\A[a-zA-Z]+\z/,
+  validates :first_name, :last_name, format: { with: /\A[a-zA-Z]+\z/,
     message: "Only letters allowed" }
   validates :age, numericality: { greater_than_or_equal_to: 18, message: "18 is the minimum age to join this bank"}
 
