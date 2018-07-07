@@ -46,6 +46,11 @@ RSpec.describe Transaction, type: :model do
     expect(transaction.account).to eq(account)
   end
 
+  it "amount must be at least $1" do
+    transaction.update(:amount => 0)
+    expect(transaction).to be_invalid
+  end
+  
   it "new transactions are not processed on creation" do
     expect(transaction.processed).to eq(false)
   end

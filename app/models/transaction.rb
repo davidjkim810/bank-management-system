@@ -2,8 +2,8 @@ class Transaction < ApplicationRecord
   belongs_to :user
   belongs_to :account
   validates :type_of_transaction, :amount, :user_id, :account_id, presence: true
-  validates :amount, numericality:  { greater_than: 0, message: "The minimum transaction amount is $1."}, on: :create
-  validates :type_of_transaction, inclusion: { in: %w(Deposit Withdrawal Fee), message: "You must enter a valid transaction name"}
+  validates :amount, numericality:  { greater_than: 0, message: "The minimum transaction amount is $1."}
+  validates :type_of_transaction, inclusion: { in: %w(Deposit Withdrawal Fee), message: "You must enter a valid transaction type. Choose from the following; 'Deposit', 'Withdrawal', 'Fee'"}
 
 
   def process_transaction
