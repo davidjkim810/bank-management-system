@@ -5,7 +5,7 @@ class CreateTransactions < ActiveRecord::Migration[5.2]
       t.integer :amount
       t.string :user_id
       t.string :account_id
-
+      t.boolean :processed, default: false
       t.timestamps
     end
   end

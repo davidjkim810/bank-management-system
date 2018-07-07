@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2018_07_06_233547) do
     t.integer "amount"
     t.string "user_id"
     t.string "account_id"
+    t.boolean "processed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

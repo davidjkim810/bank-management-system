@@ -38,13 +38,40 @@ RSpec.describe Account, type: :model do
     )
   }
 
+  let(:transaction1) {
+    Transaction.create(
+      :type_of_transaction => "Withdrawal",
+      :amount => 200,
+      :user_id => user.id,
+      :account_id => account.id
+    )
+  }
 
+  let(:transaction2) {
+    Transaction.create(
+      :type_of_transaction => "Fee",
+      :amount => 15,
+      :user_id => user.id,
+      :account_id => account.id
+    )
+  }
 
-  it "creates a valid checking account" do
+  it "creates a valid account" do
     expect(account).to be_valid
   end
 
-  it "can have the balance be deducted from" do
+  it "belongs to a single user" do
+    expect(account.user).to eq(user)
+  end
+
+  it "has many transactions" do
+    account.transactions << transaction
+    account.transactions << transaction1
+    account.transactions << transaction2
+    expect(account.transactions.count).to eq(3)
+  end
+
+  it "can have the balance deducted" do
     account.balance = account.balance - 2500
     expect(account.balance).to eq(2500)
   end
@@ -54,8 +81,5 @@ RSpec.describe Account, type: :model do
    expect(account.balance).to eq(-500)
   end
 
-  it "belongs to a single user" do
-    expect(account.user).to eq(user)
-  end
 
 end
