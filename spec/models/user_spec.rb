@@ -60,6 +60,11 @@ RSpec.describe User, type: :model do
     expect(user).to be_valid
   end
 
+  it "is valid if password is at least 6 characters long" do
+    user.update(:password => "adsf")
+    expect(user).to be_invalid
+  end
+
   it "first_name, last_name, city, state can only have letters" do
     user.update(:first_name => "David1")
     expect(user).to be_invalid
