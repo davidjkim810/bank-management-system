@@ -57,7 +57,7 @@ end
 def make_accounts
   DATA[:accounts].each do |account|
     new_account = Account.new
-    accounts.each_with_index do |attribute, i|
+    account.each_with_index do |attribute, i|
       new_account.send(DATA[:account_keys][i]+"=", attribute)
     end
     new_account.save
