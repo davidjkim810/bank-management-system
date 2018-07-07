@@ -60,6 +60,11 @@ RSpec.describe User, type: :model do
     expect(user).to be_valid
   end
 
+  it "first_name, last_name, city, state can only have letters" do
+    user.update(:first_name => "David1")
+    expect(user).to be_invalid
+  end
+
   it "belongs to one bank" do
     expect(user.bank).to eq(bank)
   end
