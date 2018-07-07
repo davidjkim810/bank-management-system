@@ -55,30 +55,19 @@ RSpec.describe User, type: :model do
     Transaction.create(:type_of_transaction => "Deposit", :amount => 60000, :user_id => user.id, :account_id => account.id)
   }
 
+  it "belongs to one bank" do
+    expect(user.bank).to eq(bank)
+  end
+
+  it "has many accounts" do
+    user.update(:accounts => [account1, account2, account3])
+      expect(user.accounts.count).to eq(3)
+  end
 
   it "creates a valid user with first_name, last_name, street_address, age, city, state, zip_code, username, email, password and bank_id" do
     expect(user).to be_valid
   end
 
-  it "must have a password that is at least 6 characters long" do
-    user.update(:password => "adsf")
-    expect(user).to be_invalid
-  end
-
-  it "first_name, last_name, city, state can only have letters" do
-    user.update(:first_name => "David1")
-    expect(user).to be_invalid
-  end
-
-  it "zip_code can only be numbers" do
-    user.update(:zip_code => "da233")
-    expect(user).to be_invalid
-  end
-
-  it "zip_code must be 5 digits" do
-    user.update(:zip_code => "2444")
-    expect(user).to be_invalid
-  end
 
   it "must have a unique username" do
     user
@@ -116,13 +105,29 @@ RSpec.describe User, type: :model do
     expect(new_user).to be_invalid
   end
 
-  it "belongs to one bank" do
-    expect(user.bank).to eq(bank)
+  it "minimum age to create account is 18" do
+    user.update(:age => 15)
+    expect(user).to be_invalid
   end
 
-  it "has many accounts" do
-    user.update(:accounts => [account1, account2, account3])
-      expect(user.accounts.count).to eq(3)
+  it "must have a password that is at least 6 characters long" do
+    user.update(:password => "adsf")
+    expect(user).to be_invalid
+  end
+
+  it "first_name, last_name, city, state can only have letters" do
+    user.update(:first_name => "David1")
+    expect(user).to be_invalid
+  end
+
+  it "zip_code can only be numbers" do
+    user.update(:zip_code => "da233")
+    expect(user).to be_invalid
+  end
+
+  it "zip_code must be 5 digits" do
+    user.update(:zip_code => "2444")
+    expect(user).to be_invalid
   end
 
   it "has many transactions through accounts" do
