@@ -7,7 +7,7 @@ class Account < ApplicationRecord
 
   def transaction_history
     self.transactions.each_with_index do |transaction, i|
-      puts "#{i+1}. Type: #{transaction.type_of_transaction} Amount: #{transaction.amount} Processed: #{transaction.processed?}"
+      puts "Transaction Number: #{i+1} | Type of Transaction: #{transaction.type_of_transaction} | Amount: #{transaction.amount} | Processed: #{transaction.processed?}"
     end
   end
 
