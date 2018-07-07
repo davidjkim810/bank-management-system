@@ -11,4 +11,8 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :city, :state, format: { with: /\A[a-zA-Z]+\z/,
     message: "Only letters allowed" }
   validates :age, numericality: { greater_than_or_equal_to: 18, message: "18 is the minimum age to join this bank"}
+
+  def bank_statement
+  end
+
 end

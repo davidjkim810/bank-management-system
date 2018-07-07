@@ -8,18 +8,18 @@ class Transaction < ApplicationRecord
 
   def process_transaction
 
-    if self.type_of_transaction == "Deposit"
+    if self.type_of_transaction == "Deposit" && !self.processed
       self.account.update(:balance => account.balance + self.amount)
       self.update(:processed => true)
 
       "You have successfully deposited #{self.amount}."
 
-    elsif self.type_of_transaction == "Withdrawal"
+    elsif self.type_of_transaction == "Withdrawal" && !self.processed
       self.account.update(:balance => account.balance - self.amount)
       self.update(:processed => true)
 
       "You have successfully withdrawn #{self.amount}."
-    elsif self.type_of_transaction == "Fee"
+    elsif self.type_of_transaction == "Fee" && !self.processed
       self.account.update(:balance => account.balance - self.amount)
       self.update(:processed => true)
 
@@ -27,4 +27,11 @@ class Transaction < ApplicationRecord
     end
   end
 
+  def processed?
+   if self.processed
+     "Yes"
+   else
+     "No"
+   end
+ end
 end
