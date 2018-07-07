@@ -57,9 +57,7 @@ RSpec.describe Bank, type: :model do
   end
 
   it "has many users" do
-    bank.users << user
-    bank.users << user2
-    bank.users << user3
+    bank.update(:users => [user, user2, user3])
     expect(bank.users.count).to eq (3)
   end
 
