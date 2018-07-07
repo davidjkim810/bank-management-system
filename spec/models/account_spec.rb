@@ -102,5 +102,12 @@ RSpec.describe Account, type: :model do
     expect(account.balance).to eq(-500)
   end
 
-
+  it "displays proper balance before transaction is processed and adjusts account balance after the method is used 'process_transaction" do
+    account = Account.create(:type_of_account => "Checking", :balance => 5000, :user_id => user.id)
+    account.transactions << transaction
+    expect(account.balance).to eq(5000)
+    account.transactions.first.process_transaction
+    expect(account.balance).to eq(7500)
+    expect(account.transactions.first.processed).to eq(true)
+  end
 end
