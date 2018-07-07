@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2018_07_06_233547) do
     t.string "type_of_transaction"
     t.integer "amount"
     t.string "user_id"
-    t.string "transaction_id"
+    t.string "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

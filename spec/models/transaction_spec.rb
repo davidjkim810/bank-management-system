@@ -21,8 +21,21 @@ RSpec.describe Transaction, type: :model do
     )
   }
 
-  let(:transaction) {
-    Transaction.create(:type => "Checking", :amount => 3500, :user_id => user.id)
+  let(:account) {
+    Account.create(
+      :type_of_account => "Checking",
+      :balance => 5000,
+      :user_id => user.id)
   }
+
+
+  let(:transaction) {
+    Transaction.create(:type_of_transaction => "Deposit", :amount => 3500, :user_id => user.id, :account_id => account.id)
+  }
+
+  it "creates a valid transaction" do
+
+    expect(transaction).to be_valid
+  end
 
 end
