@@ -4,14 +4,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.find_by(params[:user][:username])
-
-    if @user
-      if @user.authenticate(params[:user][:password])
-        session[:user_id] = @user.id
-        redirect_to user_path(@user)
-      end
-    else
+    # @user = User.find_by(params[:user][:username])
+    #
+    # if @user
+    #   if @user.authenticate(params[:user][:password])
+    #     session[:user_id] = @user.id
+    #     redirect_to user_path(@user)
+    #   end
+    # else
       @user = User.new(user_params)
 
       if @user.valid?
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
         @user.errors
         redirect_to signup_path
       end
-    end
+    # end
   end
 
   def show

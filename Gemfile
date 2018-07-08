@@ -39,6 +39,9 @@ gem 'pry'
 gem 'bcrypt'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-github'
+gem 'dotenv-rails'
+gem 'thin'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
