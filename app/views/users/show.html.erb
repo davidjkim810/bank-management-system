@@ -1,13 +1,16 @@
 <center>
 
-<h4>Accounts</h4>
+
+
+<h4><%= "#{@user.first_name} #{@user.last_name}'s Accounts" %></h4>
 
 <% @user.accounts.each do |account| %>
   <p><%= account.type_of_account %></p>
+  <p><%= "$#{account.balance}" %></p>
 <% end %>
 
 
 
-<p><%= link_to "Log Out", logout_path %>
+<%= link_to "Log Out", logout_path %>
 
 </center>

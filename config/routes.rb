@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
-  root 'users#new'
+  get 'accounts/new'
+  get 'accounts/create'
+  get 'accounts/edit'
+  get 'accounts/update'
+  get 'accounts/destroy'
+  get 'accounts/show'
+  root 'users#show'
   resources :users, only: [:create, :show, :edit, :update]
 
   get '/logout', to: 'users#destroy'
