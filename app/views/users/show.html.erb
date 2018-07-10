@@ -1,7 +1,11 @@
 <center>
 
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h4>Accounts</h4>
+
+<% @user.accounts.each do |account| %>
+  <p><%= account.type_of_account %></p>
+<% end %>
+
 
 
 <p><%= link_to "Log Out", logout_path %>
