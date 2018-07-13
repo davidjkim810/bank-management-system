@@ -18,6 +18,6 @@ class AccountsController < ApplicationController
 
   def show
     @account = Account.find(params[:id])
-    @transaction = @account.transactions.build
+    
   end
 end

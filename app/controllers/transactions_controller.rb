@@ -7,7 +7,10 @@ class TransactionsController < ApplicationController
 
   def create
 
-    @account = Account.transaction.build
+    @account = Account.find(params[:account_id])
+    @transaction = @account.transactions.build(transaction_params)
+    @transaction.save
+    redirect_to account_path(@account)
 
   end
 
