@@ -2,10 +2,10 @@
 
 
 
-<h4><%= "#{@user.first_name} #{@user.last_name}'s Accounts" %></h4>
+<h4><%= "#{@user.first_name} #{@user.last_name}'s Account(s)" %></h4>
 
 <% @user.accounts.each do |account| %>
-  <p><%= account.type_of_account %></p>
+  <p><%= link_to account.type_of_account, account_path(account) %></p>
   <p><%= "$#{account.balance}" %></p>
 <% end %>
 

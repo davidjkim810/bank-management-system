@@ -8,6 +8,10 @@ class Transaction < ApplicationRecord
   scope :processed_withdrawals, -> { processed.where("type_of_transaction == 'Withdrawal'")}
   scope :processed_deposits, -> { processed.where("type_of_transaction == 'Deposit'")}
 
+  def self.types_for_form
+    %w[Withdrawal Deposit]
+  end
+
   def process_transaction
 
     if self.type_of_transaction == "Deposit" && !self.processed

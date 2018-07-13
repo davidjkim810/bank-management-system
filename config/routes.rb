@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'accounts/new'
-  get 'accounts/create'
-  get 'accounts/edit'
-  get 'accounts/update'
-  get 'accounts/destroy'
-  get 'accounts/show'
-  root 'users#show'
+  root 'sessions#new'
+
   resources :users, only: [:create, :show, :edit, :update]
+
+  resources :accounts, only: [:create, :show, :edit, :update, :destroy] do
+    resources :transactions, only: [:new, :create, :destroy]
+  end
 
   get '/logout', to: 'users#destroy'
   get '/signup', to: 'users#new'
@@ -15,5 +14,4 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/auth/:provider/callback', to: 'sessions#create'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

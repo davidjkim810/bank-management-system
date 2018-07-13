@@ -1,2 +1,33 @@
-<h1>Accounts#show</h1>
-<p>Find me in app/views/accounts/show.html.erb</p>
+<center>
+
+  <h1><%= "#{@account.type_of_account} Account" %></h1>
+
+  <h3>Current Balance</h3>
+  <p><%= "$#{@account.balance}" %></p>
+
+  <h3>All Transactions</h3>
+
+  <% @account.transactions.each_with_index do |transaction, i| %>
+    <% if transaction.processed %>
+      <p><%= "Type: #{transaction.type_of_transaction}"%><br> <%= "Amount: $#{transaction.amount}" %><br></p>
+    <% end %>
+  <% end %>
+
+  <h3>Pending Transactions</h3>
+
+<% @account.transactions.each_with_index do |transaction, i| %>
+  <% if !transaction.processed %>
+    <p><%= "Type: #{transaction.type_of_transaction}"%><br> <%= "Amount: $#{transaction.amount}" %><br></p>
+  <% end %>
+<% end %>
+
+
+  <h3>What would you like to do?</h3>
+
+<p><%= link_to "Make Transaction", new_account_transaction_path(@account) %></p>
+
+<p><%= link_to "Accounts", user_path(@account.user_id)%></p>
+
+
+
+</center>
