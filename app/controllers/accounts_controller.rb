@@ -7,6 +7,7 @@ class AccountsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @account = @user.accounts.build(account_params)
+
     if @account.save
       redirect_to user_path(@user)
     else
@@ -15,10 +16,9 @@ class AccountsController < ApplicationController
     end
   end
 
-
   def index
     @user = User.find(params[:user_id])
-    @accounts = Account.all
+    @accounts = @user.accounts
   end
 
   def edit

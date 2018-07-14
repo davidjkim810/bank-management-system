@@ -7,7 +7,7 @@
   <p><%= f.select :type_of_account, options_for_select(Account.types_for_form, @account.type_of_account) %></p>
   <p>
     <%= f.label :balance, "Initial Deposit " %><br><br>
-    <%= f.text_field :balance %>
+    $ <%= f.text_field :balance %>
   </p>
   <%= f.hidden_field :user_id, :value=> @user.id %>
   <%= f.submit %>
