@@ -1,8 +1,10 @@
 # README
 
-Name: Bank Management System
+Name:
 
-Description: The Bank Management System (BMS) is a Rails web application that allows users of participating banks to create a username and manage their accounts online. The user can create and manage three kinds of accounts which they can make transactions through.
+Bank Management System
+
+Description: The Bank Management System (BMS) is a Rails web application that allows users of participating banks to create a username and manage their accounts online. The user can create and manage three kinds of accounts which they can also make transactions through.
 
 
 Installation Guide:
