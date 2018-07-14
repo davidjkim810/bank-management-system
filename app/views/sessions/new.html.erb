@@ -17,7 +17,8 @@
   <%= f.submit "Log In" %>
 <% end %>
 
-<%= link_to('Log in with Github', '/auth/github') %>
+<p><%= link_to "Sign Up", signup_path %><br>
+  <%= link_to('Log in with Github', '/auth/github') %></p>
 
 <% if flash[:message] %>
   <h2><%= flash[:message] %></h2>

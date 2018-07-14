@@ -2,7 +2,7 @@ class Transaction < ApplicationRecord
   belongs_to :user
   belongs_to :account
   validates :type_of_transaction, :amount, :user_id, :account_id, presence: true
-  validates :amount, numericality:  { greater_than: 0, message: "The minimum transaction amount is $1."}
+  validates :amount, numericality:  { greater_than: 0 }
   validates :type_of_transaction, inclusion: { in: %w(Deposit Withdrawal Fee), message: "You must enter a valid transaction type. Choose from the following; 'Deposit', 'Withdrawal', 'Fee'"}
   scope :processed, -> { where( processed: true) }
   scope :processed_withdrawals, -> { processed.where("type_of_transaction == 'Withdrawal'")}
@@ -13,7 +13,6 @@ class Transaction < ApplicationRecord
   end
 
   def process_transaction
-
     if self.type_of_transaction == "Deposit" && !self.processed
       self.account.update(:balance => account.balance + self.amount)
       self.update(:processed => true)

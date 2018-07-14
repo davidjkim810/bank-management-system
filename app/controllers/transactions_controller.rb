@@ -6,15 +6,30 @@ class TransactionsController < ApplicationController
   end
 
   def create
-
     @account = Account.find(params[:account_id])
     @transaction = @account.transactions.build(transaction_params)
-    @transaction.save
-    redirect_to account_path(@account)
+    if @transaction.save
+      redirect_to account_path(@account)
+    else
+      flash[:message] = @transaction.errors.full_messages_for(:amount).first
+      render :new
+    end
+  end
 
+  def edit
+    @transaction = Transaction.find(params[:id])
+    @transaction.process_transaction
+    redirect_to account_path(@transaction.account_id)
+  end
+
+
+  def update
   end
 
   def destroy
+    @transaction = Transaction.find(params[:id])
+    @transaction.delete
+    redirect_to account_path(params[:account_id])
   end
 
   private

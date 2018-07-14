@@ -5,28 +5,31 @@
   <h3>Current Balance</h3>
   <p><%= "$#{@account.balance}" %></p>
 
-  <h3>All Transactions</h3>
+  <h3>Transaction History</h3>
 
-  <% @account.transactions.each_with_index do |transaction, i| %>
-    <% if transaction.processed %>
-      <p><%= "Type: #{transaction.type_of_transaction}"%><br> <%= "Amount: $#{transaction.amount}" %><br></p>
+  <% @account.transactions.each do |transaction| %>
+    <% if transaction.processed? %>
+      <p><%= "Type: #{transaction.type_of_transaction}"%><br> <%= "Amount: $#{transaction.amount}" %><br>
+      <%= link_to "Remove", account_transaction_path(@account, transaction), method: :delete %></p>
     <% end %>
   <% end %>
 
   <h3>Pending Transactions</h3>
 
-<% @account.transactions.each_with_index do |transaction, i| %>
-  <% if !transaction.processed %>
+<% @account.transactions.each do |transaction| %>
+  <% if !transaction.processed? %>
     <p><%= "Type: #{transaction.type_of_transaction}"%><br> <%= "Amount: $#{transaction.amount}" %><br></p>
+      <%= link_to "Process", edit_account_transaction_path(@account, transaction) %><br>
+      <%= link_to "Cancel", account_transaction_path(@account, transaction), method: :delete %>
   <% end %>
 <% end %>
 
 
   <h3>What would you like to do?</h3>
 
-<p><%= link_to "Make Transaction", new_account_transaction_path(@account) %></p>
-
-<p><%= link_to "Accounts", user_path(@account.user_id)%></p>
+<p><%= link_to "New Transaction", new_account_transaction_path(@account) %><br>
+<%= link_to "Accounts", user_path(@account.user_id)%><br>
+<%= link_to "Log Out", logout_path %></p>
 
 
 

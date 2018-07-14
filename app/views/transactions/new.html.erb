@@ -5,15 +5,18 @@
   <%= f.hidden_field :account_id, :value => @account.id %>
   <%= f.hidden_field :user_id, :value=> @account.user_id %>
   <%= f.label :type_of_transaction, "Choose Your Transaction:" %><br>
-
   <p><%= f.select :type_of_transaction, options_for_select(Transaction.types_for_form, @transaction.type_of_transaction) %></p>
-
-  <%= f.label :amount, "Amount:" %>
-  <p><%= f.text_field :amount %>
+  <%= f.label :amount, "Amount (Minimum is $1)" %>
+  <p> <%= f.text_field :amount, :placeholder => (@transaction.errors.full_messages_for(:amount).first || "Enter Amount Here")%>
   </p>
 
   <%= f.submit %>
 <% end %>
 
+<% if flash[:message] %>
+  <p><h6><%= "*#{flash[:message]}" %></h6></p>
+<% end %>
+
+<p><%= link_to "Back to #{@account.type_of_account} Account", account_path(@account) %></p>
 
 </center>
