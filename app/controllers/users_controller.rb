@@ -21,20 +21,38 @@ class UsersController < ApplicationController
     if logged_in? && current_user == @user
       render :show
     else
-      flash[:message] = "Access Denied: You must be logged in to the correct user to view that page."
-      redirect_to logout_path
+      flash[:message] = "Access Denied: Invalid User"
+      redirect_to '/'
     end
   end
 
   def edit
+    @user = User.find(params[:id])
+    if logged_in? && current_user == @user
+    else
+      flash[:message] = "Access Denied: Invalid User"
+      redirect_to '/'
+    end
   end
 
   def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      flash[:message] = @user.errors.full_messages
+      render :edit
+    end
   end
 
   def destroy
-    session.delete :user_id
-    redirect_to '/'
+    if logged_in? && current_user == @user
+      session.delete :user_id
+      redirect_to '/'
+    else
+      flash[:message] = "Access Denied: You must be logged in to the correct user to view that page."
+      redirect_to '/'
+    end
   end
 
 private
