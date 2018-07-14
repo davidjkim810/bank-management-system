@@ -7,6 +7,10 @@
 
   <h3>Transaction History</h3>
 
+  <% if @account.transactions.empty? %>
+    <%= "None" %>
+  <% end %>
+
   <% @account.transactions.each do |transaction| %>
     <% if transaction.processed? %>
       <p><%= "Type: #{transaction.type_of_transaction}"%><br> <%= "Amount: $#{transaction.amount}" %><br>
@@ -23,9 +27,6 @@
       <%= link_to "Cancel", account_transaction_path(@account, transaction), method: :delete %>
   <% end %>
 <% end %>
-
-
-  <h3>What would you like to do?</h3>
 
 <p><%= link_to "New Transaction", new_account_transaction_path(@account) %><br>
 <%= link_to "Account Home", user_path(@account.user_id)%><br>

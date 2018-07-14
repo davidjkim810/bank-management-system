@@ -21,17 +21,12 @@ class AccountsController < ApplicationController
     @accounts = @user.accounts
   end
 
-  def edit
-  end
-
-  def update
-  end
-
   def destroy
     @account = Account.find(params[:id])
     @user = User.find(params[:user_id])
     @account.delete
-    redirect_to user_accounts_path(@user)
+    redirect_to user_a
+    ccounts_path(@user)
   end
 
   def show

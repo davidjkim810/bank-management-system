@@ -14,7 +14,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-
     if auth_hash = auth
       oauth_email = auth["info"]["email"]
       if user = User.find_by(:email => oauth_email)
@@ -27,6 +26,7 @@ class SessionsController < ApplicationController
         redirect_to user_path(user)
       end
     else
+
       @user = User.find_by(:username => params[:user][:username])
 
       if @user && @user.authenticate(params[:user][:password])

@@ -8,6 +8,7 @@ class TransactionsController < ApplicationController
   def create
     @account = Account.find(params[:account_id])
     @transaction = @account.transactions.build(transaction_params)
+
     if @transaction.save
       redirect_to account_path(@account)
     else
@@ -20,10 +21,6 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
     @transaction.process_transaction
     redirect_to account_path(@transaction.account_id)
-  end
-
-
-  def update
   end
 
   def destroy

@@ -11,7 +11,10 @@
   </p>
   <%= f.hidden_field :user_id, :value=> @user.id %>
   <%= f.submit %>
-<% end %>
+<% end %><br>
+
+<%= link_to "Home", '/' %><br>
+<%= link_to "Log Out", logout_path %>
 
 <% if flash[:message] %>
    <h3><%= flash[:message] %></h3>
