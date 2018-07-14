@@ -3,6 +3,13 @@ class TransactionsController < ApplicationController
   def new
     @account = Account.find(params[:account_id])
     @transaction = Transaction.new
+    @user = @account.user
+
+    if logged_in? && current_user == @user
+    else
+      flash[:message] = "Access Denied: Invalid User"
+      redirect_to '/'
+    end
   end
 
   def create

@@ -4,14 +4,12 @@ class User < ApplicationRecord
   has_many :transactions, through: :accounts
   has_secure_password
   validates :username, :email, uniqueness: true
-  validates :password, length: { minimum: 6, message: "Password must be at least 6 characters long"}
-  validates :zip_code, numericality: {only_integer: true, message: "Only numbers allowed"}
+  validates :password, length: { minimum: 6, message: "must be at least 6 characters long"}
+  validates :zip_code, numericality: {only_integer: true, message: "can only be numbers"}
   validates :zip_code, length: { is: 5 }
   validates :first_name, :last_name, format: { with: /\A[a-zA-Z]+\z/,
     message: "Only letters allowed" }
-  validates :age, numericality: { greater_than_or_equal_to: 18, message: "18 is the minimum age to join this bank"}
+  validates :age, numericality: { greater_than_or_equal_to: 18 }
 
-  def bank_statement
-  end
 
 end

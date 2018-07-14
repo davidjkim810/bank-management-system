@@ -2,23 +2,37 @@ class AccountsController < ApplicationController
   def new
     @account = Account.new
     @user = User.find(params[:user_id])
+    if logged_in? && current_user == @user
+    else
+      flash[:message] = "Access Denied: Invalid User"
+      redirect_to '/'
+    end
+
   end
 
   def create
     @user = User.find(params[:user_id])
-    @account = @user.accounts.build(account_params)
-
-    if @account.save
-      redirect_to user_path(@user)
+    if logged_in? && current_user == @user
+      @account = @user.accounts.build(account_params)
+      if @account.save
+        redirect_to user_path(@user)
+      else
+        render :new
+      end
     else
-      flash[:message] = @account.errors.full_messages_for(:balance).first
-      render :new
+      flash[:message] = "Access Denied: Invalid User"
+      redirect_to '/'
     end
   end
 
   def index
     @user = User.find(params[:user_id])
     @accounts = @user.accounts
+    if logged_in? && current_user == @user
+    else
+      flash[:message] = "Access Denied: Invalid User"
+      redirect_to '/'
+    end
   end
 
   def destroy
@@ -31,6 +45,12 @@ class AccountsController < ApplicationController
 
   def show
     @account = Account.find(params[:id])
+    @user = @account.user
+    if logged_in? && current_user == @user
+    else
+      flash[:message] = "Access Denied: Invalid User"
+      redirect_to '/'
+    end
   end
 
   private

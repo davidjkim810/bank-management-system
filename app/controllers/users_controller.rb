@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
+  
   def new
     @user = User.new
   end
 
   def create
     @user = User.new(user_params)
-
     if @user.valid?
       @user.save
       session[:user_id] = @user.id
@@ -46,13 +46,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if logged_in? && current_user == @user
       session.delete :user_id
       redirect_to '/'
-    else
-      flash[:message] = "Access Denied: You must be logged in to the correct user to view that page."
-      redirect_to '/'
-    end
   end
 
 private
