@@ -9,9 +9,8 @@
   <p><%= "$#{account.balance}" %></p>
 <% end %>
 
-
-
+<%= link_to "Open An Account", new_user_account_path(@user) %><br>
+<%= link_to "Home", '/' %><br>
 <%= link_to "Log Out", logout_path %>
-
 
 </center>

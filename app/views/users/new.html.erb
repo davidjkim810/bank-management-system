@@ -1,6 +1,6 @@
 <center>
 
-<h1>Welcome, Please Sign Up Below</h1>
+<h1>Create New User</h1>
 
 <%= form_for(@user) do |f| %>
   <p>
@@ -58,8 +58,17 @@
     <%= f.password_field :password %>
   </p>
 
-  <%= f.submit "Create New User" %>
+  <%= f.submit "Create New User" %><br>
 <% end %>
+
+<p>OR</p>
+
+<p><%= link_to('Sign Up With Github', '/auth/github') %></p>
+
+<br>
+<br>
+<br>
+<%= link_to "Home", '/' %><br>
 
 <% if flash[:message] %>
    <h3><%= flash[:message] %></h3>

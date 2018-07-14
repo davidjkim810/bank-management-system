@@ -28,8 +28,9 @@
   <h3>What would you like to do?</h3>
 
 <p><%= link_to "New Transaction", new_account_transaction_path(@account) %><br>
-<%= link_to "Accounts", user_path(@account.user_id)%><br>
+<%= link_to "Account Home", user_path(@account.user_id)%><br>
 <%= link_to "Log Out", logout_path %></p>
+
 
 
 

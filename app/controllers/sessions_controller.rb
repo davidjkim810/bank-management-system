@@ -1,4 +1,11 @@
 class SessionsController < ApplicationController
+
+  def index
+    if logged_in?
+      redirect_to user_path(current_user)
+    end
+  end
+
   def new
     @user = User.new
     if logged_in?
@@ -6,11 +13,10 @@ class SessionsController < ApplicationController
     end
   end
 
-
   def create
 
-    if auth_hash = request.env["omniauth.auth"]
-      oauth_email = request.env["omniauth.auth"]["info"]["email"]
+    if auth_hash = auth
+      oauth_email = auth["info"]["email"]
       if user = User.find_by(:email => oauth_email)
         session[:user_id] = user.id
         redirect_to user_path(user)

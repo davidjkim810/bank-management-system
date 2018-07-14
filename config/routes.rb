@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
-  root 'sessions#new'
+  root 'sessions#index'
 
-  resources :users, only: [:create, :show, :edit, :update]
+  resources :users, only: [:create, :show, :edit, :update] do
+    resources :accounts, only: [:new, :create]
+  end
 
-  resources :accounts, only: [:create, :show, :edit, :update, :destroy] do
+  resources :accounts, only: [:show, :edit, :update, :destroy] do
     resources :transactions, only: [:new, :edit, :update, :create, :destroy]
   end
 

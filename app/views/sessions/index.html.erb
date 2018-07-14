@@ -1,0 +1,13 @@
+<center>
+<h1>Online Banking</h1>
+
+<h3>Bank Network</h3>
+
+<% Bank.all.each do |bank| %>
+  <%= bank.name %><br>
+<% end %><br>
+
+
+<%= link_to "Log In", login_path %><br>
+<%= link_to "Sign Up", signup_path %>
+</center>

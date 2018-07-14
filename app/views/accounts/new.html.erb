@@ -1,0 +1,20 @@
+<center>
+
+<h1>Open New Account</h1>
+
+<%= form_for([@user, @account]) do |f| %>
+  <%= f.label :type_of_account, "Select Type of Account:" %><br>
+  <p><%= f.select :type_of_account, options_for_select(Account.types_for_form, @account.type_of_account) %></p>
+  <p>
+    <%= f.label :balance, "Balance: " %>
+    <%= f.text_field :balance %>
+  </p>
+  <%= f.hidden_field :user_id, :value=> @user.id %>
+  <%= f.submit %>
+<% end %>
+
+<% if flash[:message] %>
+   <h3><%= flash[:message] %></h3>
+<% end %>
+
+</center>

@@ -17,8 +17,11 @@
   <%= f.submit "Log In" %>
 <% end %>
 
+<p><%= link_to('Log in with Github', '/auth/github') %></p>
+
 <p><%= link_to "Sign Up", signup_path %><br>
-  <%= link_to('Log in with Github', '/auth/github') %></p>
+  <%= link_to "Home", '/' %><br>
+  </p>
 
 <% if flash[:message] %>
   <h2><%= flash[:message] %></h2>
