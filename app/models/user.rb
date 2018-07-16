@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :transactions, through: :accounts
   has_secure_password
   validates :username, :email, uniqueness: true
+  validates_presence_of :street_address, :city, :state, :email, :on => :create
   validates :password, length: { minimum: 6, message: "must be at least 6 characters long"}
   validates :zip_code, numericality: {only_integer: true, message: "can only be numbers"}
   validates :zip_code, length: { is: 5 }

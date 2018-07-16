@@ -6,52 +6,52 @@
 
   <p>
     <%= f.label :first_name, "First Name:" %>
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name, :placeholder => (@user.errors.full_messages_for(:first_name).first || "Enter First Name Here") %>
   </p>
 
   <p>
     <%= f.label :last_name, "Last Name:" %>
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name, :placeholder => (@user.errors.full_messages_for(:last_name).first || "Enter Last Name Here") %>
   </p>
 
   <p>
     <%= f.label :street_address, "Street Address:" %>
-    <%= f.text_field :street_address %>
+    <%= f.text_field :street_address, :placeholder => (@user.errors.full_messages_for(:street_address).first || "Enter Address Here") %>
   </p>
 
   <p>
     <%= f.label :city, "City:" %>
-    <%= f.text_field :city %>
+    <%= f.text_field :city, :placeholder => (@user.errors.full_messages_for(:city).first || "Enter City Here") %>
   </p>
 
   <p>
     <%= f.label :state, "State:" %>
-    <%= f.text_field :state %>
+    <%= f.text_field :state, :placeholder => (@user.errors.full_messages_for(:state).first || "Enter State") %>
   </p>
 
   <p>
     <%= f.label :zip_code, "Zip Code:" %>
-    <%= f.text_field :zip_code %>
+    <%= f.text_field :zip_code, :placeholder => (@user.errors.full_messages_for(:zip_code).first || "Enter Zip Code Here") %>
   </p>
 
   <p>
     <%= f.label :age, "Age:" %>
-    <%= f.text_field :age %>
+    <%= f.text_field :age, :placeholder => (@user.errors.full_messages_for(:age).first || "Enter Age Here") %>
   </p>
 
   <p>
     <%= f.label :username, "Username:" %>
-    <%= f.text_field :username %>
+    <%= f.text_field :username, :placeholder => (@user.errors.full_messages_for(:username).first || "Enter Username Here") %>
   </p>
 
   <p>
     <%= f.label :email, "Email:" %>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, :placeholder => (@user.errors.full_messages_for(:email).first || "Enter Email Here") %>
   </p>
 
   <p>
     <%= f.label :password, "Password:" %>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, :placeholder => (@user.errors.full_messages_for(:password).first || "Enter Password Here") %>
   </p>
 
   <%= f.submit %><br>
