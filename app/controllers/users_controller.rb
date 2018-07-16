@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   def new
     @user = User.new
   end
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      @user.errors
+      flash[:message] = @user.errors.full_messages
       redirect_to signup_path
     end
   end

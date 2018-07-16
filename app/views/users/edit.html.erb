@@ -2,67 +2,10 @@
 
 <h1>Edit User Information</h1>
 
-<%= form_for(@user) do |f| %>
-  <p>
-    <%= f.label :bank, "Bank Name:" %>
-    <%= f.collection_select(:bank_id, Bank.all, :id, :name, prompt: "Select a Bank") %>
-  </p>
+<%= render partial: "form" %>
 
-  <p>
-    <%= f.label :first_name, "First Name:" %>
-    <%= f.text_field :first_name %>
-  </p>
-
-  <p>
-    <%= f.label :last_name, "Last Name:" %>
-    <%= f.text_field :last_name %>
-  </p>
-
-  <p>
-    <%= f.label :street_address, "Street Address:" %>
-    <%= f.text_field :street_address %>
-  </p>
-
-  <p>
-    <%= f.label :city, "City:" %>
-    <%= f.text_field :city %>
-  </p>
-
-  <p>
-    <%= f.label :state, "State:" %>
-    <%= f.text_field :state %>
-  </p>
-
-  <p>
-    <%= f.label :zip_code, "Zip Code:" %>
-    <%= f.text_field :zip_code %>
-  </p>
-
-  <p>
-    <%= f.label :age, "Age:" %>
-    <%= f.text_field :age %>
-  </p>
-
-  <p>
-    <%= f.label :username, "Username:" %>
-    <%= f.text_field :username %>
-  </p>
-
-  <p>
-    <%= f.label :email, "Email:" %>
-    <%= f.text_field :email %>
-  </p>
-
-  <p>
-    <%= f.label :password, "Password:" %>
-    <%= f.password_field :password %>
-  </p>
-
-  <%= f.submit %><br>
-<% end %>
-<br>
-<br>
 <%= link_to "Home", '/' %><br>
+
 <%= link_to "Log Out", logout_path %><br><br>
 
 <% if flash[:message].is_a?(Array) %>
@@ -71,6 +14,6 @@
   <% end %>
 <% else %>
   <%= flash[:message] %>
-<% end %>
+<% end %><br>
 
 </center>
