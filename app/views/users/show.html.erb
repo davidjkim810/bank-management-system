@@ -7,8 +7,18 @@
   <p><%= "$#{account.balance}" %></p>
 <% end %>
 
+
+<h4><%= "#{@user.first_name} #{@user.last_name}'s Stocks"%></h4>
+
+<% @user.shares.each do |share| %>
+  <p>Company Name: <%= share.stock.company_name %><br>
+    Shares: <%= share.quantity %><br>
+    Equity: $<%= share.quantity * share.price %>
+  </p>
+<% end %>
+
 <%= link_to "Open Account", new_user_account_path(@user) %><br>
-<%= link_to "Manage Account", user_accounts_path(@user) %><br><br>
+<%= link_to "Manage Accounts", user_accounts_path(@user) %><br><br>
 <%= link_to "Home", '/' %><br>
 <%= link_to "Settings", edit_user_path %><br>
 <%= link_to "Log Out", logout_path %>

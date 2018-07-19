@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_06_233547) do
+ActiveRecord::Schema.define(version: 2018_07_19_192730) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "type_of_account"
@@ -22,6 +22,22 @@ ActiveRecord::Schema.define(version: 2018_07_06_233547) do
 
   create_table "banks", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shares", force: :cascade do |t|
+    t.string "stock_id"
+    t.string "user_id"
+    t.integer "price"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.string "company_name"
+    t.integer "shares_available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -3,7 +3,6 @@ class CreateStocks < ActiveRecord::Migration[5.2]
     create_table :stocks do |t|
       t.string :company_name
       t.integer :shares_available
-
       t.timestamps
     end
   end
