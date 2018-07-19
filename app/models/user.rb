@@ -2,6 +2,8 @@ class User < ApplicationRecord
   belongs_to :bank
   has_many :accounts
   has_many :transactions, through: :accounts
+  has_many :shares
+  has_many :stocks, through: :shares
   has_secure_password
   validates :username, :email, uniqueness: true
   validates_presence_of :street_address, :city, :state, :email, :on => :create

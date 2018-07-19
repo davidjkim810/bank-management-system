@@ -36,6 +36,10 @@ class TransactionsController < ApplicationController
     redirect_to account_path(params[:account_id])
   end
 
+  def highest
+    @highest = Transaction.highest_deposit
+  end
+
   private
 
   def transaction_params

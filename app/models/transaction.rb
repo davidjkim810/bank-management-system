@@ -7,6 +7,7 @@ class Transaction < ApplicationRecord
   scope :processed, -> { where( processed: true) }
   scope :processed_withdrawals, -> { processed.where("type_of_transaction == 'Withdrawal'")}
   scope :processed_deposits, -> { processed.where("type_of_transaction == 'Deposit'")}
+  scope :highest_deposit, -> { maximum("amount")}
 
   def self.types_for_form
     %w[Withdrawal Deposit]

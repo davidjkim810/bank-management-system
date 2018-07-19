@@ -39,8 +39,7 @@ class AccountsController < ApplicationController
     @account = Account.find(params[:id])
     @user = User.find(params[:user_id])
     @account.delete
-    redirect_to user_a
-    ccounts_path(@user)
+    redirect_to user_accounts_path(@user)
   end
 
   def show
