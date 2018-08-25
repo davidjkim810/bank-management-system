@@ -2,11 +2,11 @@
 
 <h4><%= "#{@user.first_name} #{@user.last_name}"%></h4>
 
-<a href="/users/<%= @user.id %>/accounts" id="accounts">View Accounts</a>
+<%= link_to "View Accounts", user_accounts_path(@user), :class => "user_accounts" %>
 
   <% @user.accounts.each do |account| %>
     <p><%= link_to account.type_of_account, account_path(account) %></p>
-    <p><%= "#{account.balance}" %></p>
+    <p><%= "$#{account.balance}" %></p>
   <% end %>
 
 
