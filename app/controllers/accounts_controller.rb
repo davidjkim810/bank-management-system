@@ -7,7 +7,6 @@ class AccountsController < ApplicationController
       flash[:message] = "Access Denied: Invalid User"
       redirect_to '/'
     end
-
   end
 
   def create
@@ -29,6 +28,7 @@ class AccountsController < ApplicationController
     @user = User.find(params[:user_id])
     @accounts = @user.accounts
     if logged_in? && current_user == @user
+      render 'accounts/index', :layout => false
     else
       flash[:message] = "Access Denied: Invalid User"
       redirect_to '/'
