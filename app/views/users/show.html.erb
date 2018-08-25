@@ -4,12 +4,8 @@
 
 <%= link_to "View Accounts", user_accounts_path(@user), :class => "user_accounts" %>
 
-  <% @user.accounts.each do |account| %>
-    <p><%= link_to account.type_of_account, account_path(account) %></p>
-    <p><%= "$#{account.balance}" %></p>
-  <% end %>
-
-
+<div class="accounts">
+</div>
 
 <h4><%= "#{@user.first_name} #{@user.last_name}'s Stocks"%></h4>
 
