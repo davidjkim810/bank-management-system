@@ -7,7 +7,11 @@
 <div class="accounts">
 </div>
 
-<h4><%= "#{@user.first_name} #{@user.last_name}'s Stocks"%></h4>
+<div class="stocks">
+
+</div>
+
+<h4><%= "Your Stocks"%></h4>
 
 <% @user.shares.each do |share| %>
   <p>Company Name: <%= share.stock.company_name %><br>

@@ -19,7 +19,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if logged_in? && current_user == @user
-      render :show
     else
       flash[:message] = "Access Denied: Invalid User"
       redirect_to '/'
