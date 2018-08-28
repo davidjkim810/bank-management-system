@@ -1,1 +1,8 @@
-alert("Hello from Rails!")
+
+$.get("/users/" + <%= user.id %> + "/accounts" + ".json", function(data){
+  let $div = $('div.accounts');
+  data.forEach(function(account){
+    $div.append()
+  })
+
+});

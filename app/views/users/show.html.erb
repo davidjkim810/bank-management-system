@@ -3,7 +3,7 @@
 <h4><%= "#{@user.first_name} #{@user.last_name}"%></h4>
 
 
-<button id="user_accounts" href="<%= user_account_path(@user) %>">View Accounts</button>
+<button id="user_accounts" data-id="<%= @user.id %>">View Accounts</button>
 <div class="accounts">
 </div>
 
