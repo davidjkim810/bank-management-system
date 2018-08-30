@@ -23,8 +23,15 @@ $(function(){
       $('#user_accounts').text("Hide Accounts")
       $div.html("")
         fetch("/users/" + $('#user_accounts')[0].dataset.id + "/accounts" + ".json")
-        .then((res) => res.json())
-        .then((data) => debugger)
+        .then(function(res){
+          return res.json();
+        })
+        .then(function(data){
+          data.forEach(function(account){
+            var new_account = new Account(account);
+          })
+        })
+
 
     } else {
       $('#user_accounts').text("View Accounts")
