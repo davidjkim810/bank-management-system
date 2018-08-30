@@ -39,11 +39,5 @@ $(function(){
     });
   }
 
-  function stockBrowser(){
-
-  }
-
-  function browseTransactions(){
-    $()
 
   }
