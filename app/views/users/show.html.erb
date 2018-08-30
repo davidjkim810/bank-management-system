@@ -2,24 +2,19 @@
 
 <h4><%= "#{@user.first_name} #{@user.last_name}"%></h4>
 
-
 <button id="user_accounts" data-id="<%= @user.id %>">View Accounts</button>
 <div class="accounts">
-</div>
-
-<div class="stocks">
-
 </div>
 
 <h4><%= "Your Stocks"%></h4>
 
 <div class="stocks">
-  <p>Company Name: <%= @user.shares.first.stock.company_name %><br>
-    Shares: <%= @user.shares.first.quantity %><br>
-    Equity: $<%= @user.shares.first.quantity * @user.shares.first.price %></p>
+  <p>Company Name: <%= @user.shares[0].stock.company_name %><br>
+    Shares: <%= @user.shares[0].quantity %><br>
+    Equity: $<%= @user.shares[0].quantity * @user.shares[0].price %></p>
 </div>
-<button id="stock_browser" data-id="<%= @user.id %>">Next</button>
 
+<button id="stock_browser" data-id="0">Next</button>
 
 <%= link_to "Open Account", new_user_account_path(@user) %><br>
 <%= link_to "Manage Accounts", user_accounts_path(@user) %><br><br>
