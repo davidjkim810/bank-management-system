@@ -1,6 +1,6 @@
 class SharesController < ApplicationController
   def show
-    binding.pry
-
+    @share = Share.find(params[:id])
+    render json: @share
   end
 end
