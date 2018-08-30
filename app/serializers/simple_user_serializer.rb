@@ -1,4 +1,4 @@
-class UserSerializer < ActiveModel::Serializer
+class SimpleUserSerializer < ActiveModel::Serializer
   attributes :id
   has_many :shares, serializer: SimpleShareSerializer
 end
