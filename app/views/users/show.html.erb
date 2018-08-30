@@ -13,10 +13,11 @@
   <p>Company Name: <%= @user.shares[0].stock.company_name %><br>
     Shares: <%= @user.shares[0].quantity %><br>
     Equity: $<%= @user.shares[0].quantity * @user.shares[0].price %></p>
+  <button id="stock_browser" data-user_id="<%= @user.id %>" data-stock_id="0">Next</button><br><br>
   <% end %>
 </div>
 
-<button id="stock_browser" data-user_id="<%= @user.id %>" data-id="0">Next</button><br><br>
+
 
 <%= link_to "Open Account", new_user_account_path(@user) %><br>
 <%= link_to "Manage Accounts", user_accounts_path(@user) %><br><br>
