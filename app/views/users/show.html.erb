@@ -13,12 +13,13 @@
 
 <h4><%= "Your Stocks"%></h4>
 
-<% @user.shares.each do |share| %>
-  <p>Company Name: <%= share.stock.company_name %><br>
-    Shares: <%= share.quantity %><br>
-    Equity: $<%= share.quantity * share.price %>
-  </p>
-<% end %>
+<div class="stocks">
+  <p>Company Name: <%= @user.shares.first.stock.company_name %><br>
+    Shares: <%= @user.shares.first.quantity %><br>
+    Equity: $<%= @user.shares.first.quantity * @user.shares.first.price %></p>
+</div>
+<button id="stock_browser" data-id="<%= @user.id %>">Next</button>
+
 
 <%= link_to "Open Account", new_user_account_path(@user) %><br>
 <%= link_to "Manage Accounts", user_accounts_path(@user) %><br><br>
