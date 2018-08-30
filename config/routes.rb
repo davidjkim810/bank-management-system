@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:create, :show, :edit, :update] do
     resources :accounts, only: [:new, :create, :index, :destroy]
+    resources :shares, only: [:show]
   end
 
   resources :accounts, only: [:show] do
@@ -16,5 +17,5 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/auth/:provider/callback', to: 'sessions#create'
-  
+
 end
