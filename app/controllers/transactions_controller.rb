@@ -20,7 +20,7 @@ class TransactionsController < ApplicationController
       redirect_to account_path(@account)
     else
       flash[:message] = @transaction.errors.full_messages_for(:amount).first
-      render :new
+      render "accounts/show"
     end
   end
 
