@@ -17,7 +17,7 @@ class TransactionsController < ApplicationController
     @transaction = @account.transactions.build(transaction_params)
 
     if @transaction.save
-      redirect_to account_path(@account)
+      render json: @transaction
     else
       flash[:message] = @transaction.errors.full_messages_for(:amount).first
       render "accounts/show"

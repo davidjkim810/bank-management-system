@@ -1,7 +1,7 @@
-$(function(){
+$(document).on('turbolinks:load', function(){
   stockBrowser();
   previousStockBrowser();
-})
+});
 
   class Share {
     constructor(data){

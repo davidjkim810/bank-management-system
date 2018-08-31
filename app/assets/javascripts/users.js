@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', function(){
   showAccounts();
 });
 
@@ -28,7 +28,7 @@ $(function(){
               output += `
                 <p><a href='/accounts/${new_account.id}'>${new_account.type_of_account}</a></p>
                 $${new_account.balance}<br>
-                
+
               `;
           })
           $div.append(output);

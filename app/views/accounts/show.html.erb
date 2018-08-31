@@ -7,10 +7,12 @@
 
   <h3>Transaction History</h3>
 
+<div class="transactions">
+</div>
 
 <p><%= link_to "Highest Transaction", highest_path %></p>
 
-<p><%= link_to "New Transaction", new_account_transaction_path(@account) %><br>
+<p><%= link_to "New Transaction", new_account_transaction_path(@account) %><br><br>
 
 
   <style>
@@ -22,9 +24,8 @@
     }
   </style>
 
-<h3>Quick Transaction</h3>
-
-<div class="quickTransactionForm">
+<button class="transaction-link">Quick Transaction</button>
+<div class="quickTransactionForm" style="display: none">
   <%= form_for([@account, @transaction]) do |f| %>
     <%= f.hidden_field :account_id, :value => @account.id %>
     <%= f.hidden_field :user_id, :value=> @account.user_id %>
@@ -33,11 +34,11 @@
     <%= f.label :amount, "Amount (Minimum is $1)" %>
     <p> <%= f.text_field :amount, :placeholder => (@transaction.errors.full_messages_for(:amount).first || "Enter Amount Here")%>
     </p>
-    <%= f.submit %>
+    <%= f.submit :id => 'createTransaction'%>
   <% end %>
 </div>
 
-<br><%= link_to "Account Home", user_path(@account.user_id)%><br>
+<br><%= link_to "Home", user_path(@account.user_id)%><br>
 <%= link_to "Log Out", logout_path %></p>
 
 
