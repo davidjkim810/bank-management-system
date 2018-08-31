@@ -14,7 +14,7 @@
   <% @account.transactions.each do |transaction| %>
     <% if transaction.processed? %>
       <p><%= "Type: #{transaction.type_of_transaction}"%><br> <%= "Amount: $#{transaction.amount}" %><br>
-      <%= link_to "Remove", account_transaction_path(@account, transaction), method: :delete %></p>
+      <%= link_to "Clear", account_transaction_path(@account, transaction), method: :delete %></p>
     <% end %>
   <% end %>
 
@@ -31,7 +31,33 @@
 <p><%= link_to "Highest Transaction", highest_path %></p>
 
 <p><%= link_to "New Transaction", new_account_transaction_path(@account) %><br>
-<%= link_to "Account Home", user_path(@account.user_id)%><br>
+
+
+  <style>
+    .quickTransactionForm {
+      width: 180px;
+      height: 150px;
+      padding: 30px;
+      border: 2px solid black;
+    }
+  </style>
+
+<h3>Quick Transaction</h3>
+
+<div class="quickTransactionForm">
+  <%= form_for([@account, @transaction]) do |f| %>
+    <%= f.hidden_field :account_id, :value => @account.id %>
+    <%= f.hidden_field :user_id, :value=> @account.user_id %>
+    <%= f.label :type_of_transaction, "Choose Your Transaction:" %><br>
+    <p><%= f.select :type_of_transaction, options_for_select(Transaction.types_for_form, @transaction.type_of_transaction) %></p>
+    <%= f.label :amount, "Amount (Minimum is $1)" %>
+    <p> <%= f.text_field :amount, :placeholder => (@transaction.errors.full_messages_for(:amount).first || "Enter Amount Here")%>
+    </p>
+    <%= f.submit %>
+  <% end %>
+</div>
+
+<br><%= link_to "Account Home", user_path(@account.user_id)%><br>
 <%= link_to "Log Out", logout_path %></p>
 
 

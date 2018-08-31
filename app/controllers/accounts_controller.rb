@@ -45,6 +45,7 @@ class AccountsController < ApplicationController
   def show
     @account = Account.find(params[:id])
     @user = @account.user
+    @transaction = @user.transactions.build
     if logged_in? && current_user == @user
     else
       flash[:message] = "Access Denied: Invalid User"
