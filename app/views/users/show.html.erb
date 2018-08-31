@@ -15,7 +15,7 @@
       Equity: $<%= @user.shares[0].quantity * @user.shares[0].price %></p>
 </div>
 
-<button id="previous_stock_browser" data-user_id="<%= @user.id %>" data-share_index="0" data-share_length="<%= @user.shares.length %>"data-stock_id='<%= @user.shares[0].id %>'>Previous</button>
+<button id="previous_stock_browser" data-user_id="<%= @user.id %>">Previous</button>
 
 <button id="stock_browser" data-user_id="<%= @user.id %>" data-share_index="0" data-share_length="<%= @user.shares.length %>"data-stock_id='<%= @user.shares[0].id %>'>Next</button><br><br>
 <% end %>
