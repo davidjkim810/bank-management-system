@@ -45,6 +45,7 @@ class AccountsController < ApplicationController
   def show
     @account = Account.find(params[:id])
     @user = @account.user
+    @transactions = @account.transactions
     @transaction = @user.transactions.build
     if logged_in? && current_user == @user
     else

@@ -11,16 +11,19 @@ $(document).on('turbolinks:load', function(){
 
   function newTransaction(){
     $('#new_transaction').on('submit', function(e){
-      debugger
+
         $.ajax({
         type: this.method,
         url: this.action,
         data: $(this).serialize(),
         success: function(response){
           var $transactions = $('div.transactions')
-          $transactions.append(response);
+          $transactions.append(`
+            ${response.type_of_transaction}<br>
+            $${response.amount}<br><br>
+            `);
+          $('#new_transaction')[0][6].disabled = false
         }
-
       });
       e.preventDefault();
     });

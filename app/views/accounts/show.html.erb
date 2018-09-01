@@ -8,9 +8,11 @@
   <h3>Transaction History</h3>
 
 <div class="transactions">
+  <% @transactions.each do |transaction| %>
+  <%= transaction.type_of_transaction %><br>
+  $<%= transaction.amount %><br><br>
+  <% end %>
 </div>
-
-<p><%= link_to "Highest Transaction", highest_path %></p>
 
 <p><%= link_to "New Transaction", new_account_transaction_path(@account) %><br><br>
 
