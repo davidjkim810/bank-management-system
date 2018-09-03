@@ -3,6 +3,13 @@ $(document).on('turbolinks:load', function(){
   newTransaction();
 });
 
+class Transaction{
+  constructor(response){
+    
+  }
+}
+
+
   function toggleTransactionForm(){
     $(".transaction-link").on('click', function(e){
       $('div.quickTransactionForm').toggle();
@@ -18,6 +25,7 @@ $(document).on('turbolinks:load', function(){
         data: $(this).serialize(),
         success: function(response){
           var $transactions = $('div.transactions')
+
           $transactions.append(`
             ${response.type_of_transaction}<br>
             $${response.amount}<br><br>
