@@ -28,7 +28,10 @@ class AccountsController < ApplicationController
     @user = User.find(params[:user_id])
     @accounts = @user.accounts
     if logged_in? && current_user == @user
-      render json: @accounts
+      respond_to do |format|
+        format.html
+        format.json {render json: @accounts}
+      end
     else
       flash[:message] = "Access Denied: Invalid User"
       redirect_to '/'

@@ -32,16 +32,18 @@ $(document).on('turbolinks:load', function(){
   function showAccounts(){
     $('#user_accounts').on("click", function(e){
       let $div = $('div.accounts');
-      if ($('#user_accounts').text() === "View Accounts"){
-      $('#user_accounts').text("Hide Accounts")
+      let $userAccounts = $('#user_accounts')
+      if ($userAccounts.text() === "View Accounts"){
+      $userAccounts.text("Hide Accounts")
       $div.html("")
-        fetch("/users/" + $('#user_accounts')[0].dataset.id + "/accounts" + ".json")
+      // demonstration of using the fetch method to get JSON
+        fetch("/users/" + $userAccounts[0].dataset.id + "/accounts" + ".json")
         .then((res) => res.json())
         .then((data) => {
           let output = '';
           data.forEach(function(account){
+            // creation of JS object
             var new_account = new Account(account);
-
               output += `<br>
               ---------------------------------
                 <p><a href='/accounts/${new_account.id}'>${new_account.type_of_account}</a></p>
@@ -56,7 +58,7 @@ $(document).on('turbolinks:load', function(){
 
         })
     } else {
-      $('#user_accounts').text("View Accounts")
+      $userAccounts.text("View Accounts")
       $div.html("")
     }
     });
