@@ -3,15 +3,14 @@ $(document).on('turbolinks:load', function(){
   newTransaction();
 });
 
-class Transaction{
-  constructor(response){
-    this.id = response.id;
-    this.processed = response.processed;
-    this.type_of_transaction = response.type_of_transaction;
-    this.amount = response.amount;
+class Transaction {
+  constructor(data){
+    this.id = data.id;
+    this.processed = data.processed;
+    this.type_of_transaction = data.type_of_transaction;
+    this.amount = data.amount;
   }
 }
-
 
   function toggleTransactionForm(){
     $(".transaction-link").on('click', function(e){
@@ -19,25 +18,29 @@ class Transaction{
     });
   }
 
-
   function newTransaction(){
-    $('#new_transaction').on('submit', function(e){
+    // references the new transaction form
+    let $newTransaction = $('#new_transaction');
+
+    $newTransaction.on('submit', function(e){
 
         $.ajax({
         type: this.method,
         url: this.action,
         data: $(this).serialize(),
-        success: function(response){
+        success: function(data){
           var $transactions = $('div.transactions')
-          var newTransaction = new Transaction(response)
+          var newTransaction = new Transaction(data)
+          var accountId = $newTransaction[0].action
 
-          var accountId = $('#new_transaction')[0].action
           $transactions.append(`
             ${newTransaction.type_of_transaction}<br>
             $${newTransaction.amount}<br>
             <a href="${accountId}/${newTransaction.id}/edit">Process</a><br><br>
             `);
-          $('#new_transaction')[0][6].disabled = false
+
+            // this enables resubmission of form otherwise button disables
+          $newTransaction[0][6].disabled = false
         }
       });
       e.preventDefault();
