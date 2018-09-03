@@ -5,6 +5,7 @@ $(document).on('turbolinks:load', function(){
 
 class Transaction{
   constructor(response){
+    this.id = response.id
     this.type_of_transaction = response.type_of_transaction;
     this.amount = response.amount;
   }
@@ -27,9 +28,12 @@ class Transaction{
         success: function(response){
           var $transactions = $('div.transactions')
           var newTransaction = new Transaction(response)
+
+          var accountId = $('#new_transaction')[0].action
           $transactions.append(`
             ${newTransaction.type_of_transaction}<br>
             $${newTransaction.amount}<br><br>
+            <a href="${accountId}/${newTransaction.id}/edit">Process Transaction</a>
             `);
           $('#new_transaction')[0][6].disabled = false
         }
