@@ -5,7 +5,8 @@ $(document).on('turbolinks:load', function(){
 
 class Transaction{
   constructor(response){
-    this.id = response.id
+    this.id = response.id;
+    this.processed = response.processed;
     this.type_of_transaction = response.type_of_transaction;
     this.amount = response.amount;
   }
@@ -17,6 +18,7 @@ class Transaction{
       $('div.quickTransactionForm').toggle();
     });
   }
+
 
   function newTransaction(){
     $('#new_transaction').on('submit', function(e){
@@ -33,7 +35,7 @@ class Transaction{
           $transactions.append(`
             ${newTransaction.type_of_transaction}<br>
             $${newTransaction.amount}<br>
-            <a href="${accountId}/${newTransaction.id}/edit">Process</a><br>
+            <a href="${accountId}/${newTransaction.id}/edit">Process</a><br><br>
             `);
           $('#new_transaction')[0][6].disabled = false
         }
