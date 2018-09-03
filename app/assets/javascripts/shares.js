@@ -18,6 +18,7 @@ $(document).on('turbolinks:load', function(){
       let $stockId =  $('#stock_browser')[0].dataset.stock_id;
       let userShareLength = $('#stock_browser')[0].dataset.share_length;
       let shareIndex = parseInt($('#stock_browser')[0].dataset.share_index);
+      let source = $('stock-template').html();
         shareIndex += 1;
 
       if (shareIndex <= userShareLength - 1) {
