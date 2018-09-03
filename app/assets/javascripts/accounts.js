@@ -26,10 +26,10 @@ class Transaction{
         data: $(this).serialize(),
         success: function(response){
           var $transactions = $('div.transactions')
-
+          var newTransaction = new Transaction(response)
           $transactions.append(`
-            ${response.type_of_transaction}<br>
-            $${response.amount}<br><br>
+            ${newTransaction.type_of_transaction}<br>
+            $${newTransaction.amount}<br><br>
             `);
           $('#new_transaction')[0][6].disabled = false
         }
