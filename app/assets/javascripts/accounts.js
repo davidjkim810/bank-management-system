@@ -5,7 +5,8 @@ $(document).on('turbolinks:load', function(){
 
 class Transaction{
   constructor(response){
-    
+    this.type_of_transaction = response.type_of_transaction;
+    this.amount = response.amount;
   }
 }
 
