@@ -15,6 +15,7 @@ $(document).on('turbolinks:load', function(){
     }
 
     unprocessedTransactions(){
+      debugger
       let unprocessed = [];
       let unprocessedHtml = '';
       this.transactions.forEach(e=> e.processed === false ? unprocessed.push(e) : '');
