@@ -45,6 +45,7 @@ gem 'omniauth-github'
 gem 'dotenv-rails'
 gem 'thin'
 gem 'jquery-turbolinks'
+gem 'turbolinks'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -14,9 +14,6 @@
   <% end %>
 </div>
 
-<p><%= link_to "New Transaction", new_account_transaction_path(@account) %><br><br>
-
-
   <style>
     .quickTransactionForm {
       width: 180px;
@@ -27,6 +24,7 @@
   </style>
 
 <button class="transaction-link">Quick Transaction</button>
+
 <div class="quickTransactionForm" style="display: none">
   <%= form_for([@account, @transaction]) do |f| %>
     <%= f.hidden_field :account_id, :value => @account.id %>
