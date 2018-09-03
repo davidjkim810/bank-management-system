@@ -24,7 +24,7 @@ $(document).on('turbolinks:load', function(){
         $.get('/users/' + this.dataset.user_id + '/shares/' + this.dataset.stock_id, function(data){
 
           $('#stock_browser')[0].dataset.share_index = shareIndex;
-          
+
           $stockId = $('#stock_browser')[0].dataset.stock_id =  data.user.shares[shareIndex].id.toString();
 
           $.get('/users/' + data.user.id + '/shares/' + $stockId, function (data){
@@ -57,13 +57,13 @@ $(document).on('turbolinks:load', function(){
 
           $.get('/users/' + data.user.id + '/shares/' + $stockId, function (data){
             var newShare = new Share(data)
-
             $stocks.html("")
             $stocks.append(`
               <p>Company Name: ${newShare.company_name}<br>
               Shares: ${newShare.quantity}<br>
               Equity: $${newShare.price * newShare.quantity}</p>
               `)
+              debugger
           });
         });
       }

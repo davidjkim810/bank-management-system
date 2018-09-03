@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery3
+//= handlebars_assets
 //= require turbolinks
 //= require jquery_ujs
 //= require activestorage
