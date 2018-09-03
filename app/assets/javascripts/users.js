@@ -27,8 +27,9 @@ $(document).on('turbolinks:load', function(){
             var new_account = new Account(account);
               output += `
                 <p><a href='/accounts/${new_account.id}'>${new_account.type_of_account}</a></p>
-                $${new_account.balance}<br>
+                $${new_account.balance}<br><br>
 
+                <button class="accountTransactions">View Transactions</button><br><br>
               `;
           })
           $div.append(output);

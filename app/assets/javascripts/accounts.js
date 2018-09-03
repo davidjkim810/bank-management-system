@@ -32,8 +32,8 @@ class Transaction{
           var accountId = $('#new_transaction')[0].action
           $transactions.append(`
             ${newTransaction.type_of_transaction}<br>
-            $${newTransaction.amount}<br><br>
-            <a href="${accountId}/${newTransaction.id}/edit">Process Transaction</a>
+            $${newTransaction.amount}<br>
+            <a href="${accountId}/${newTransaction.id}/edit">Process</a><br>
             `);
           $('#new_transaction')[0][6].disabled = false
         }

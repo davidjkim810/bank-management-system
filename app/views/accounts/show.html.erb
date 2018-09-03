@@ -9,10 +9,13 @@
 
 <div class="transactions">
   <% @transactions.each do |transaction| %>
-  <%= transaction.type_of_transaction %><br>
-  $<%= transaction.amount %><br><br>
+  <% if transaction.processed == false %>
+    <%= transaction.type_of_transaction %><br>
+    $<%= transaction.amount %><br>
+    <%= link_to "Process", edit_account_transaction_path(@account, transaction) %><br><br>
   <% end %>
-</div>
+  <% end %>
+</div><br>
 
   <style>
     .quickTransactionForm {
