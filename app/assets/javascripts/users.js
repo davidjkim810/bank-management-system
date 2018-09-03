@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function(){
   showAccounts();
-  toggleTransactions()
+
 });
 
   class Account {
@@ -15,25 +15,17 @@ $(document).on('turbolinks:load', function(){
     }
 
     unprocessedTransactions(){
-      debugger
       let unprocessed = [];
       let unprocessedHtml = '';
       this.transactions.forEach(e=> e.processed === false ? unprocessed.push(e) : '');
       unprocessed.forEach(e=> unprocessedHtml += `<br>${e.type_of_transaction}<br>
         $${e.amount}<br>
-
         `);
-      if (unprocessed.length > 1) {return unprocessedHtml;}
+      if (unprocessed.length > 0) {return unprocessedHtml;}
       else {
         return '<br>No Transactions'
       }
     }
-  }
-
-  function toggleTransactions(){
-    $('#account-transactions').on('click', function(e){
-      alert('hi')
-    });
   }
 
 
@@ -61,7 +53,6 @@ $(document).on('turbolinks:load', function(){
               `;
           })
           $div.append(output);
-
 
         })
     } else {
