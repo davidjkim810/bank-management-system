@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:create, :show, :edit, :update] do
     resources :accounts, only: [:new, :create, :index, :destroy]
+    resources :stocks, only: [:index]
     resources :shares, only: [:show]
   end
 
@@ -11,7 +12,6 @@ Rails.application.routes.draw do
     resources :transactions, only: [:new, :edit, :create, :destroy]
   end
 
-  resources :stocks, only: [:index]
 
   get '/highest', to: 'transactions#highest'
   get '/logout', to: 'users#destroy'

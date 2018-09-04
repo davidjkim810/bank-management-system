@@ -9,23 +9,12 @@
 
 <h4><%= "Your Stocks"%></h4>
 
-<% if @user.shares.length > 0 %>
-<div class="stocks">
-    <p>Company Name: <%= @user.shares[0].stock.company_name %><br>
-      Shares: <%= @user.shares[0].quantity %><br>
-      Equity: $<%= @user.shares[0].quantity * @user.shares[0].price %></p>
-</div>
-
-<button id="previous_stock_browser" data-user_id="<%= @user.id %>">Previous</button>
-
-<button id="stock_browser" data-user_id="<%= @user.id %>" data-share_index="0" data-share_length="<%= @user.shares.length %>"data-stock_id='<%= @user.shares[0].id %>'>Next</button><br><br>
-<% end %>
+<%= render partial: "stocks" %>
 
 <%= link_to "Open Account", new_user_account_path(@user) %><br>
 <%= link_to "Manage Accounts", user_accounts_path(@user) %><br><br>
 
-
-<%= link_to "Stock Market", stocks_path %><br>
+<%= link_to "Stock Market", user_stocks_path(@user) %><br>
 <%= link_to "Settings", edit_user_path %><br>
 <%= link_to "Log Out", logout_path %>
 

@@ -9,6 +9,14 @@
 bank_1 = Bank.create(name: "Bank of Freedom")
 bank_2 = Bank.create(name: "Flatiron Credit Union")
 
+stock_1 = Stock.create(company_name: "Apple", shares_available: 45000000)
+stock_2 = Stock.create(company_name: "Target", shares_available: 5000000)
+stock_3 = Stock.create(company_name: "Whole Foods", shares_available: 70000000)
+stock_4 = Stock.create(company_name: "Dell", shares_available: 401230000)
+stock_5 = Stock.create(company_name: "Blizzard", shares_available: 523000000)
+stock_6 = Stock.create(company_name: "Walmart", shares_available: 2409850808)
+
+
 DATA = {
   :user_keys =>
     ["bank_id", "first_name", "last_name", "street_address", "city", "state", "zip_code", "age", "username", "email", "password_digest"],
