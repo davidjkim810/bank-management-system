@@ -11,16 +11,14 @@ $(document).on('turbolinks:load', function(){
       this.company_name = data.stock.company_name;
     }
   }
-
+  
   function stockBrowser(){
     $('#stock_browser').on('click', function(e){
       let $stocks = $('div.stocks');
       let $stockId =  $('#stock_browser')[0].dataset.stock_id;
       let userShareLength = $('#stock_browser')[0].dataset.share_length;
       let shareIndex = parseInt($('#stock_browser')[0].dataset.share_index);
-      let source = $('stock-template').html();
         shareIndex += 1;
-
       if (shareIndex <= userShareLength - 1) {
         $.get('/users/' + this.dataset.user_id + '/shares/' + this.dataset.stock_id, function(data){
 
@@ -30,7 +28,6 @@ $(document).on('turbolinks:load', function(){
 
           $.get('/users/' + data.user.id + '/shares/' + $stockId, function (data){
             var newShare = new Share(data)
-
             $stocks.html("")
             $stocks.append(`
               <p>Company Name: ${newShare.company_name}<br>
@@ -64,7 +61,6 @@ $(document).on('turbolinks:load', function(){
               Shares: ${newShare.quantity}<br>
               Equity: $${newShare.price * newShare.quantity}</p>
               `)
-              debugger
           });
         });
       }

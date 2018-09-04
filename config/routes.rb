@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :transactions, only: [:new, :edit, :create, :destroy]
   end
 
+  resources :stocks, only: [:index]
+
   get '/highest', to: 'transactions#highest'
   get '/logout', to: 'users#destroy'
   get '/signup', to: 'users#new'
