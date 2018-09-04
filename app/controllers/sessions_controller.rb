@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
       else
         bank = Bank.all.first
         user = User.create(:email => oauth_email, :password => "abc123", :bank_id => bank.id)
-        binding.pry
+    
         session[:user_id] = user.id
         redirect_to user_path(user)
       end

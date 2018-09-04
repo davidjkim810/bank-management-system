@@ -1,3 +1,3 @@
 class SimpleShareSerializer < ActiveModel::Serializer
-  attributes :id, :price, :quantity
+  attributes :id, :quantity
 end

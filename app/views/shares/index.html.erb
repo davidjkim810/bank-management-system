@@ -3,17 +3,24 @@
 <h1>Stocks</h1>
 <% @stocks.each do |stock| %>
   Company Name: <%= stock.company_name %><br>
-  Shares Available: <%= stock.shares_available %><br><br>
+  Shares Available: <%= stock.shares_available %><br>
+  Price: $<%= stock.price %><br><br>
 <% end %>
 
 <%= form_for([@user, @share]) do |f| %>
   <%= f.hidden_field :user_id, :value=> @user.id %>
-  <%= f.label :company_name, "Choose a Stock:" %><br>
-  <p><%= f.select :company_name, options_for_select(Stock.stock_names, @share.company_name) %></p>
-  <%= f.label :amount, "Amount (Minimum is $1)" %>
+  <%= f.label :stock_id, "Choose a Stock:" %>
+  <%= f.collection_select(:stock_id, Stock.all, :id, :company_name, prompt: "Select a Stock") %>
+  <p><%= f.label :quantity, "# of Shares to Purchase (Must be 1 or greater)" %>
+    <%= f.text_field :quantity %>
+  </p>
   <%= f.submit :id => 'Buy Shares'%>
 <% end %>
 
+<% if flash[:message] %>
+<h5> <%= flash[:message] %></h5>
+<% end %>
 
 <br><%= link_to "Home", user_path(@user)%><br>
+
 </center>
