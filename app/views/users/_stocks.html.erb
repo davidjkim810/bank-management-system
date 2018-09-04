@@ -2,7 +2,7 @@
 <div class="stocks">
     <p>Company Name: <%= @user.shares[0].stock.company_name %><br>
       Shares: <%= @user.shares[0].quantity %><br>
-      Equity: $<%= @user.shares[0].quantity * @user.shares[0].price %></p>
+      Equity: $<%= @user.shares[0].quantity * @user.shares[0].stock.price %></p>
 </div>
 
 <button id="previous_stock_browser" data-user_id="<%= @user.id %>">Previous</button>

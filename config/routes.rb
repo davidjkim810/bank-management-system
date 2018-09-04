@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:create, :show, :edit, :update] do
     resources :accounts, only: [:new, :create, :index, :destroy]
-    resources :stocks, only: [:index]
+    resources :stocks, only: [:index, :create]
     resources :shares
   end
 

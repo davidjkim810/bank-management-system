@@ -4,10 +4,17 @@ class SharesController < ApplicationController
     render json: @share, include: ["stock", "user.shares"]
   end
 
+  def index
+    @user = User.find(params[:user_id])
+    @stocks = Stock.all
+    @share = Share.new
+  end
+
   def new
   end
 
   def create
+
   end
 
   def edit
@@ -18,5 +25,5 @@ class SharesController < ApplicationController
 
   def destroy
   end
-  
+
 end

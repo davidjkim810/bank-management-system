@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     if logged_in?
       redirect_to user_path(current_user)
     else
-  
+
     end
   end
 
@@ -23,9 +23,10 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id
         redirect_to user_path(user)
       else
-        user = User.create(:email => oauth_email, :password => "abc123")
+        bank = Bank.all.first
+        user = User.create(:email => oauth_email, :password => "abc123", :bank_id => bank.id)
+        binding.pry
         session[:user_id] = user.id
-
         redirect_to user_path(user)
       end
     else

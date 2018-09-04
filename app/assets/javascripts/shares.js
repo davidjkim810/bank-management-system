@@ -6,12 +6,12 @@ $(document).on('turbolinks:load', function(){
   class Share {
     constructor(data){
       this.id = data.id;
-      this.price = data.price;
+      this.price = data.stock.price;
       this.quantity = data.quantity;
-      this.company_name = data.stock.company_name;
+      this.company_name = data.company_name;
     }
   }
-  
+
   function stockBrowser(){
     $('#stock_browser').on('click', function(e){
       let $stocks = $('div.stocks');
