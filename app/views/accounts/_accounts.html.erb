@@ -1,5 +1,11 @@
+<% if @accounts.length > 0 %>
+
 <% @accounts.each do |account| %>
-  <p><%= account.type_of_account %><br>
-    $<%= account.balance %>
-  </p>
+  <p><b><%= account.type_of_account %></b></p><%="$#{account.balance}" %><br><br>
+  <%= link_to "Close Account", user_account_path(@user, account), data: {confirm: "Are you sure you want to close this account? Your balance will be lost forever!"}, method: :delete %><br>
+<% end %>
+
+<% else %>
+
+You have no accounts<br>
 <% end %>

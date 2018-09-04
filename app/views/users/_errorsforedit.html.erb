@@ -1,0 +1,7 @@
+<% if flash[:message].is_a?(Array) %>
+  <% flash[:message].each do |message| %>
+    <%= message %><br>
+  <% end %>
+<% else %>
+  <%= flash[:message] %>
+<% end %><br>

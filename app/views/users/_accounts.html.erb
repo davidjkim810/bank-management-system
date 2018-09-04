@@ -1,0 +1,8 @@
+<% if @user.accounts.length > 0 %>
+  <button id="user_accounts" data-id="<%= @user.id %>">View Accounts</button>
+  <div class="accounts">
+  </div><br>
+<% else %>
+  You have no opened accounts<br>
+<% end %><br>
+---------------------------------

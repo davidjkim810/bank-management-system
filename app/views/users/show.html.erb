@@ -2,30 +2,20 @@
 
 <h4><%= "#{@user.first_name} #{@user.last_name}"%></h4>
 
-<button id="user_accounts" data-id="<%= @user.id %>">View Accounts</button>
-<div class="accounts">
-</div><br>
----------------------------------
+<%= render partial: "accounts" %>
 
 <h4><%= "Your Stocks"%></h4>
 
 <%= render partial: "stocks" %>
 
-<%= link_to "Open Account", new_user_account_path(@user) %><br>
-<%= link_to "Manage Accounts", user_accounts_path(@user) %><br><br>
+<%= link_to "Stock Market", user_stocks_path(@user) %><br><br>
 
-<%= link_to "Stock Market", user_stocks_path(@user) %><br>
-<%= link_to "Settings", edit_user_path %><br>
+<%= link_to "Open Account", new_user_account_path(@user) %><br>
+<%= link_to "Manage Accounts", user_accounts_path(@user) %><br>
+
+<%= link_to "User Settings", edit_user_path %><br><br>
 <%= link_to "Log Out", logout_path %>
 
-<p>
-<% if flash[:message].is_a?(Array) %>
-  <% flash[:message].each do |message| %>
-    <%= message %>
-  <% end %>
-<% else %>
-  <%= flash[:message] %>
-<% end %>
-</p>
+<%= render partial: "errorsforshow" %>
 
 </center>
