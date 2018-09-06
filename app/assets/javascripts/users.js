@@ -10,7 +10,7 @@ $(document).on('turbolinks:load', function(){
     this.balance = data.balance;
     this.transactions = data.transactions
     }
-    accountInformation() {
+    accountInformation(){
       return `Your ${this.type_of_account} account has a balance of $${this.balance}.`
     }
 

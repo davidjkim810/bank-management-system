@@ -23,7 +23,6 @@ class Transaction {
     let $newTransaction = $('#new_transaction');
 
     $newTransaction.on('submit', function(e){
-
         $.ajax({
         type: this.method,
         url: this.action,

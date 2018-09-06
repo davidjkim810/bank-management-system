@@ -1,11 +1,15 @@
 <center>
 
 <h1>Stocks</h1>
+<div class="sortedStocks">
 <% @stocks.each do |stock| %>
   Company Name: <%= stock.company_name %><br>
   Shares Available: <%= stock.shares_available %><br>
   Price: $<%= stock.price %><br><br>
 <% end %>
+</div>
+
+<button id="stockSorter" data-id="<%= @user.id %>">Sort</button><br><br>
 
 <%= form_for([@user, @share]) do |f| %>
   <%= f.hidden_field :user_id, :value=> @user.id %>
